@@ -1,0 +1,118 @@
+#  Commands in Every Language
+# Bot Commands
+PING_COMMAND : ["ping", "پینگ"]
+START_COMMAND : ["start", "شروع"]
+HELP_COMMAND : ["help", "راهنما"]
+SETTINGS_COMMAND : ["settings", "setting", "پنل"]
+RELOAD_COMMAND : ["admincache", "reload", "پیکربندی"]
+GSTATS_COMMAND : ["gstats", "آمار کلی"]
+STATS_COMMAND : ["stats", "آمار"]
+LANGUAGE_COMMAND : ["lang", "language", "langs", "زبان"]
+
+
+# Play Commands
+
+PLAY_COMMAND : ["play", "vplay", "cplay", "cvplay", "playforce", "vplayforce", "cplayforce", "cvplayforce", "پخش"]
+PLAYMODE_COMMAND : ["playmode", "حالت پخش"]
+CHANNELPLAY_COMMAND : ["channelplay", "تنظیم کانال"]
+STREAM_COMMAND : ["stream", "cstream", "streamforce", "پخش زنده"]
+
+# Playlists Command
+
+
+PLAYLIST_COMMAND : ["playlist", "لیست پخش"]
+DELETEPLAYLIST_COMMAND : ["deleteplaylist", "حذف لیست پخش"]
+ADDPLAYLIST_COMMAND : ["addplaylist", "افزودن به لیست پخش"]
+
+
+# Tools
+QUEUE_COMMAND : ["queue",صف", "cqueue", "کانال صف"]
+SONG_COMMAND : ["song", دانلود", "video", "ترانه", "ویدیو"]
+LYRICS_COMMAND : ["lyrics", "متن"]
+
+
+# Admin Commands
+AUTH_COMMAND : ["auth", "ترفیع موزیک"]
+UNAUTH_COMMAND : ["unauth", "عزل موزیک"]
+AUTHUSERS_COMMAND : ["authusers", "لیست مدیران موزیک"]
+PAUSE_COMMAND : ["pause",توقف","cpause", " کانال توقف"]
+RESUME_COMMAND : ["resume",ادامه", "cresume", " کانال ادامه"]
+MUTE_COMMAND : ["mute", "بیصدا", cmute", "کانال بیصدا"]
+UNMUTE_COMMAND : ["unmute",باصدا", "cunmute", "کانال باصدا"]
+STOP_COMMAND : ["stop", "end", "اتمام",cstop", "cend", " کانال اتمام"]
+SKIP_COMMAND : ["skip", "بعدی",cskip", "کانال بعدی"]
+SHUFFLE_COMMAND : ["shuffle", "تصادفی",cshuffle", " کانال تصادفی"]
+LOOP_COMMAND : ["loop", "تکرار",cloop", "کانال تکرار"]
+SEEK_COMMAND : ["seek", "پرش",cseek", "کانال پرش",seekback", "عقب",cseekback", " کانال عقب"]
+REBOOT_COMMAND : ["reboot", "بازنشانی"]
+
+
+# Sudo Users Commands
+ADDSUDO_COMMAND : ["addsudo", "افزودن سودو"]
+DELSUDO_COMMAND : ["delsudo", "حذف سودو"]
+SUDOUSERS_COMMAND : ["sudolist", "لیست سودو"]
+
+
+
+# Broadcast
+BROADCAST_COMMAND : ["broadcast", "اعلان همگانی"]
+
+
+# Blacklist Chat
+BLACKLISTCHAT_COMMAND : ["blacklistchat", "گروه های بن شده"]
+WHITELISTCHAT_COMMAND : ["whitelistchat", "گروه های فعال"]
+BLACKLISTEDCHAT_COMMAND : ["blacklistedchat", "چت‌های بلاک"]
+
+
+
+# Video Calls Command
+VIDEOLIMIT_COMMAND : ["set_video_limit", "تنظیم محدودیت ویدئو"]
+VIDEOMODE_COMMAND : ["videomode", "حالت ویدئو"]
+
+
+# Maintenance
+MAINTENANCE_COMMAND : ["maintenance", "نگهداری"]
+LOGGER_COMMAND : ["logger", "گزارشگر"]
+
+
+# Heroku
+GETLOG_COMMAND : ["get_log", "دریافت لاگ"]
+GETVAR_COMMAND : ["get_var", "دریافت متغیر"]
+DELVAR_COMMAND : ["del_var", "حذف متغیر"]
+SETVAR_COMMAND : ["set_var", "تنظیم متغیر"]
+USAGE_COMMAND : ["usage", "استفاده"]
+VARS_COMMAND : ["vars", "config", "متغیرها", "پیکربندی"]
+
+
+
+# Basic Bot Commands
+UPDATE_COMMAND : ["update", "gitpull", "به‌روزرسانی"]
+RESTART_COMMAND : ["restart", "ریستارت"]
+AUTOEND_COMMAND : ["autoend", "پایان خودکار"]
+
+
+# Private Bot Mode
+AUTHORIZE_COMMAND : ["authorize", "مجاز کردن"]
+UNAUTHORIZE_COMMAND : ["unauthorize", "غیرمجاز کردن"]
+AUTHORIZED_COMMAND : ["authorized", "مجاز"]
+# Block Users Command
+BLOCK_COMMAND : ["block", "مسدود کردن"]
+UNBLOCK_COMMAND : ["unblock", "رفع مسدودیت"]
+
+
+
+
+BLOCKED_COMMAND : ["blockedusers", "کاربران مسدود شده"]
+# Speedtest
+SPEEDTEST_COMMAND : ["speedtest", "تنظیم سرعت"]
+# Voice Chat Commands
+ACTIVEVC_COMMAND : ["activevoice", "وویس های فعال ",activevc", "لیست فعال"]
+
+
+
+
+ACTIVEVIDEO_COMMAND : ["activevideo", "activevd", "ویدیو فعال"]
+# Gban Commands
+GBAN_COMMAND : ["gban", "مسدودیت جهانی"]
+UNGBAN_COMMAND : ["ungban", "رفع مسدودیت جهانی"]
+GBANNED_COMMAND : ["gbannedusers", "کاربران مسدود شده جهانی"]
