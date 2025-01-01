@@ -1,3 +1,4 @@
+
 import uvloop
 
 uvloop.install()
@@ -7,12 +8,6 @@ import sys
 
 from pyrogram import Client
 from pyrogram.enums import ChatMemberStatus
-from pyrogram.errors import (
-    ChatSendPhotosForbidden,
-    ChatWriteForbidden,
-    FloodWait,
-    MessageIdInvalid,
-)
 from pyrogram.types import (
     BotCommand,
     BotCommandScopeAllChatAdministrators,
@@ -29,60 +24,12 @@ class YukkiBot(Client):
     def __init__(self):
         LOGGER(__name__).info(f"Starting Bot")
         super().__init__(
-            "Atro",
+            "PyKalier",
             api_id=config.API_ID,
             api_hash=config.API_HASH,
             bot_token=config.BOT_TOKEN,
             in_memory=True,
-            sleep_threshold=240,
-            max_concurrent_transmissions=5,
-            workers=50,
         )
-
-    async def edit_message_text(self, *args, **kwargs):
-        try:
-            return await super().edit_message_text(*args, **kwargs)
-        except FloodWait as e:
-            time = int(e.value)
-            await asyncio.sleep(time)
-            if time < 25:
-                return await self.edit_message_text(self, *args, **kwargs)
-        except MessageIdInvalid:
-            pass
-
-    async def send_message(self, *args, **kwargs):
-        if kwargs.get("send_direct", False):
-            kwargs.pop("send_direct", None)
-            return await super().send_message(*args, **kwargs)
-
-        try:
-            return await super().send_message(*args, **kwargs)
-        except FloodWait as e:
-            time = int(e.value)
-            await asyncio.sleep(time)
-            if time < 25:
-                return await self.send_message(self, *args, **kwargs)
-        except ChatWriteForbidden:
-            chat_id = kwargs.get("chat_id") or args[0]
-            if chat_id:
-                await self.leave_chat(chat_id)
-
-    async def send_photo(self, *args, **kwargs):
-        try:
-            return await super().send_photo(*args, **kwargs)
-        except FloodWait as e:
-            time = int(e.value)
-            await asyncio.sleep(time)
-            if time < 25:
-                return await self.send_photo(self, *args, **kwargs)
-        except ChatSendPhotosForbidden:
-            chat_id = kwargs.get("chat_id") or args[0]
-            if chat_id:
-                await self.send_message(
-                    chat_id,
-                    "I don't have the right to send photos in this chat, leaving now..",
-                )
-                await self.leave_chat(chat_id)
 
     async def start(self):
         await super().start()
@@ -95,45 +42,45 @@ class YukkiBot(Client):
         try:
             await self.send_message(
                 config.LOG_GROUP_ID,
-                text=f"<u><b>{self.mention} Bot Started :</b><u>\n\nId : <code>{self.id}</code>\nName : {self.name}\nUsername : @{self.username}",
+                text=f"<u><b>{self.mention} ربات شروع به کار کرد :</b><u>\n\nآیدی  : <code>{self.id}</code>\nنام : {self.name}\nنام کاربری  : @{self.username}",
             )
         except:
             LOGGER(__name__).error(
-                "Bot has failed to access the log group. Make sure that you have added your bot to your log channel and promoted as admin!"
+                "ربات نتوانسته به گروه لاگ دسترسی پیدا کند. مطمئن شوید که ربات خود را به کانال لاگ اضافه کرده‌اید و به عنوان مدیر ارتقا داده‌اید!"
             )
-            LOGGER(__name__).error("An error occurred", exc_info=True)
-            sys.exit()
+            # sys.exit()
         if config.SET_CMDS == str(True):
             try:
+
                 await self.set_bot_commands(
                     commands=[
-                        BotCommand("start", "Start the bot"),
-                        BotCommand("help", "Get the help menu"),
-                        BotCommand("ping", "Check if the bot is alive or dead"),
+                        BotCommand("start", "شروع ربات"),
+                        BotCommand("help", "دستورات کمک"),
+                        BotCommand("ping", "چک کردن ربات"),
                     ],
                     scope=BotCommandScopeAllPrivateChats(),
                 )
                 await self.set_bot_commands(
                     commands=[
-                        BotCommand("play", "Start playing requested song"),
+                        BotCommand("play", "شروع پخش موزیک"),
                     ],
                     scope=BotCommandScopeAllGroupChats(),
                 )
                 await self.set_bot_commands(
                     commands=[
-                        BotCommand("play", "Start playing requested song"),
-                        BotCommand("skip", "Move to next track in queue"),
-                        BotCommand("pause", "Pause the current playing song"),
-                        BotCommand("resume", "Resume the paused song"),
-                        BotCommand("end", "Clear the queue and leave voicechat"),
-                        BotCommand("shuffle", "Randomly shuffles the queued playlist."),
+                        BotCommand("play", "شروع پخش موزیک"),
+                        BotCommand("skip", "رفتن به موزیک بعدی"),
+                        BotCommand("pause", "توقف موزیک در حال پخش"),
+                        BotCommand("resume", "ادامه موزیک"),
+                        BotCommand("end", "بستن پخش ویس چت"),
+                        BotCommand("shuffle", "پخش اتفاقی"),
                         BotCommand(
                             "playmode",
-                            "Allows you to change the default playmode for your chat",
+                            "دیدن حالت پخش",
                         ),
                         BotCommand(
                             "settings",
-                            "Open the settings of the music bot for your chat.",
+                            "باز کردن تنظیمات ربات برای چت شما.",
                         ),
                     ],
                     scope=BotCommandScopeAllChatAdministrators(),
@@ -145,7 +92,7 @@ class YukkiBot(Client):
         try:
             a = await self.get_chat_member(config.LOG_GROUP_ID, self.id)
             if a.status != ChatMemberStatus.ADMINISTRATOR:
-                LOGGER(__name__).error("Please promote bot as admin in logger group")
+                LOGGER(__name__).error("Please promote Bot as Admin in Logger Group")
                 sys.exit()
         except Exception:
             pass
@@ -153,7 +100,4 @@ class YukkiBot(Client):
             self.name = get_me.first_name + " " + get_me.last_name
         else:
             self.name = get_me.first_name
-        LOGGER(__name__).info(f"MusicBot started as {self.name}")
-
-    async def stop(self):
-        await super().stop()
+        LOGGER(__name__).info(f"MusicBot Started as {self.name}")
