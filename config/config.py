@@ -45,7 +45,7 @@ EXTRA_PLUGINS = getenv(
 
 EXTRA_PLUGINS_REPO = getenv(
     "EXTRA_PLUGINS_REPO",
-    "https://pykalier.com",
+    "https://github.com/AtroMusic/Atro_music_plugin",
     # "https://github.com/TheTeamVivek/Extra-Plugin",
 )
 # Fill here the external plugins repo where plugins that you want to load
